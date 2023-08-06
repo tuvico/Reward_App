@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1> 🎁 Quiz Competition 🎁</h1>
+
+  <div class="container">
+    <form action="" id="contactForm">
+
+        <div class="inputBox">
+            <input type="text" value="" id="name" placeholder="Enter your name" required />
+        </div>
+
+        <div class="inputBox">
+            <input type="email" value="" id="emailid" placeholder="Enter your email" required />
+        </div>
+
+        <div class="inputBox">
+        <input type="text" value="" id="token"  placeholder="Enter your Favourite Number"  required>
+        </div>
+
+      
+
+  <div id="question" ></div>
+
+   <div class="inputBox">
+    <input type="text" value="" id="answer" placeholder=" Type your Answer" />
+   </div>
+  
+   <div class="pay">
+    <p>Please Pay Rs. 10 Registration Fee  👉  <a href="https://upilinks.in/payment-link/upi1572333674" class="clk" required> Pay Now</a> </p>
+
+   </div>
+
+
+  <button  id="submit-answer">Submit Answer</button>
+  <script src="script.js"></script>
+ 
+  <script type="module">
+  
+  
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+
+  import { getDatabase ,ref , set, get , child } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCnoBpqa-az6D7nmmN3dW_f5pFm9zlU5GI",
+    authDomain: "reward-22787.firebaseapp.com",
+    databaseURL: "https://reward-22787-default-rtdb.firebaseio.com",
+    projectId: "reward-22787",
+    storageBucket: "reward-22787.appspot.com",
+    messagingSenderId: "380413688775",
+    appId: "1:380413688775:web:713eabf4c59d11659077e2"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+
+  const db = getDatabase(app);
+
+  document.getElementById("submit-answer").addEventListener('click' ,function(e){
+    e.preventDefault();
+    set(ref(db, "user/" +  document.getElementById("name").value),{
+        name: document.getElementById("name").value,
+        emailid : document.getElementById("emailid").value,
+        token: document.getElementById("token").value,
+        question: document.getElementById("question"),
+        answer: document.getElementById("answer").value
+
+    });
+    alert("Submit Succesfully");
+  })
+
+
+
+
+  </script>
+  </form>
+
+
+</body>
+</html>
